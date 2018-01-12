@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet Canvas render</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="vendor/leaflet.css" />
+    <style>
+        html, body, #map { padding: 0; margin: 0;}
+        form > div { display: inline-block; width: 150px; }
+        #map { height: 800px; width: 700px;}
+
+        .leaflet-popup-content { max-height: 300px; overflow: auto; }
+    </style>
+    <script src="vendor/leaflet-src.js"></script>
+    <script src="vendor/lodash.js"></script>
+    <script src="./CanvasLayer.js"></script>
+    <script src="./QuadTree.js"></script>
+</head>
+<body>
+    <h2><span id="nbResults">-</span> visible elements</h2>
+    <div id="map"></div>
+
+    <form>
+        <div>FILTER COLOR :</div>
+        <label><input type="radio" name="color" autocomplete="off" onChange="canvasLayer.filterColor(null)" checked>All</label>
+        <label><input type="radio" name="color" autocomplete="off" onChange="canvasLayer.filterColor('red')">Red</label>
+        <label><input type="radio" name="color" autocomplete="off" onChange="canvasLayer.filterColor('blue')">Blue</label>
+        <label><input type="radio" name="color" autocomplete="off" onChange="canvasLayer.filterColor('yellow')">Yellow</label>
+    </form>
+
+    <form>
+        <div>FILTER TYPE :</div>
+        <label><input type="radio" name="type" autocomplete="off" onChange="canvasLayer.filterType(null)" checked>All</label>
+        <label><input type="radio" name="type" autocomplete="off" onChange="canvasLayer.filterType('PT')">Point</label>
+        <label><input type="radio" name="type" autocomplete="off" onChange="canvasLayer.filterType('CI')">Circle</label>
+        <label><input type="radio" name="type" autocomplete="off" onChange="canvasLayer.filterType('EL')">Ellipse</label>
+    </form>
+
+    <form>
+        <div>POINT VIZ :</div>
+        <label><input type="radio" name="viz" autocomplete="off" onChange="canvasLayer.setPointViz('RECT')" checked>Draw rect</label>
+        <label><input type="radio" name="viz" autocomplete="off" onChange="canvasLayer.setPointViz('PICT')">Picto image</label>
+    </form>
+
+    <form>
+        <div>DRAW ON DRAG :</div>
+        <label><input type="radio" name="draw" autocomplete="off" onChange="canvasLayer.setDrawOnDrag(true)" checked>Enable</label>
+        <label><input type="radio" name="draw" autocomplete="off" onChange="canvasLayer.setDrawOnDrag(false)">Disable</label>
+    </form>
+
+    <script src="./app.js"></script>
+</body>
+</html>
